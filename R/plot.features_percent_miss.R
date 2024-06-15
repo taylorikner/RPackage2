@@ -10,11 +10,11 @@
 #' @return A ggplot object representing the bar plot.
 #'
 #' @examples
-#' data(input_parameters_raw)
-#' 
-#' input_parameters_raw |>
-#'   features_percent_miss(na_list = c(""," ","NA")) |>
-#'   plot()
+#'
+#' mtcars |>
+#'  missing_at_random(1/3) |>
+#'  features_percent_miss(na_list = c(""," ","NA")) |>
+#'  plot()
 #'
 #' @import dplyr ggplot2 scales
 #' @importFrom stats reorder
@@ -44,6 +44,6 @@ plot.features_percent_miss <- function(x, add.label = TRUE){
       labs(x= "Percent Missing", y= "Column", title = "Missing Data Plot") +
       theme(legend.position = "none")
   }
-  
+
   return(plot_obj)
 }

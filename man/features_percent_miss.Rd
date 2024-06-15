@@ -36,14 +36,15 @@ This function creates a bar plot showing the percentage of complete values
 for each feature in a data frame or tibble.
 }
 \examples{
-data(input_parameters_raw)
 
-features_percent_miss(input_parameters_raw,  na_list = c(""," ","NA"))
+mtcars |>
+ missing_at_random(1/3) |>
+ features_percent_miss()
 
-data(input_parameters_raw)
 
-input_parameters_raw |>
-  features_percent_miss(na_list = c(""," ","NA")) |>
-  plot()
+mtcars |>
+ missing_at_random(1/3) |>
+ features_percent_miss(na_list = c(""," ","NA")) |>
+ plot()
 
 }

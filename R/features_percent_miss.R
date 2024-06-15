@@ -11,9 +11,10 @@
 #' @return a tibble (data frame) with columns: feature, SumNa (sum of NA entries), SumComp, PctNa, PctComp
 #'
 #' @examples
-#' data(input_parameters_raw)
-#' 
-#' features_percent_miss(input_parameters_raw,  na_list = c(""," ","NA"))
+#'
+#' mtcars |>
+#'  missing_at_random(1/3) |>
+#'  features_percent_miss()
 #'
 #' @import dplyr tibble
 #'

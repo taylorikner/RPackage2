@@ -16,7 +16,7 @@
 #' missmap(data)
 #'
 #' mtcars |>
-#'   missing_at_random()
+#'   missing_at_random() |>
 #'   missmap()
 #'
 #'
