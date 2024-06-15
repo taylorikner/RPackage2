@@ -17,15 +17,27 @@ my_deck <- DeckOfCards$new()
 # Shuffle the deck
 my_deck$reshuffle()
 # Draw cards
-drawn_cards <- my_deck$draw(5)
+drawn_cards1 <- my_deck$draw(5)
 # Print drawn cards
 print(my_deck$drawn)
+# should be the same
+drawn_cards1 == my_deck$drawn
 # Draw more cards
-drawn_cards <- my_deck$draw(5)
-# Print remaining cards
-print(my_deck$deck)
+drawn_cards2 <- my_deck$draw(3)
+# should be the same
+rbind(drawn_cards1, drawn_cards2) == my_deck$drawn
+# Print drawn cards
+print(my_deck$drawn)
+# Check number of cards
+nrow(rbind(drawn_cards1, drawn_cards2)) + nrow(my_deck$deck) == 52
 # Reshuffle the deck
 my_deck$reshuffle()
+nrow(my_deck$deck) == 52
+nrow(my_deck$drawn) == 0
+# draw 40 cards
+drawn_cards3 <- my_deck$draw(40)
+# sort the remaining cards
+my_deck$solitaire("deck") |> print()
 
 
 }
@@ -44,6 +56,7 @@ my_deck$reshuffle()
 \item \href{#method-DeckOfCards-new}{\code{DeckOfCards$new()}}
 \item \href{#method-DeckOfCards-draw}{\code{DeckOfCards$draw()}}
 \item \href{#method-DeckOfCards-reshuffle}{\code{DeckOfCards$reshuffle()}}
+\item \href{#method-DeckOfCards-solitaire}{\code{DeckOfCards$solitaire()}}
 \item \href{#method-DeckOfCards-clone}{\code{DeckOfCards$clone()}}
 }
 }
@@ -91,6 +104,26 @@ Reshuffle the deck of cards.
 
 \subsection{Returns}{
 a data frame representing the reshuffled deck of cards.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-DeckOfCards-solitaire"></a>}}
+\if{latex}{\out{\hypertarget{method-DeckOfCards-solitaire}{}}}
+\subsection{Method \code{solitaire()}}{
+sort the deck of cards.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{DeckOfCards$solitaire(hand = "deck")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{hand}}{either the \code{deck} or the \code{drawn} hand.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a data frame representing the sorted deck of cards.
 }
 }
 \if{html}{\out{<hr>}}

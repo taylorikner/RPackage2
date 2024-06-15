@@ -12,25 +12,30 @@ Boot of Decks
 This R6 class simulates a boot of decks that allows drawing and reshuffling.
 }
 \examples{
-# Create a boot of decks
-my_boot <- BootOfDecks$new(number_of_decks = 2)
-# Draw cards from the boot
-drawn_cards <- my_boot$draw(5)
+# Create a new boot of decks
+my_boot <- BootOfDecks$new(2)
+drawn_cards1 <- my_boot$draw(5)
 # Print drawn cards
-print(drawn_cards)
+print(drawn_cards1)
+# should be the same
+drawn_cards1 == my_boot$drawn
 # Draw more cards
-drawn_cards <- my_boot$draw(5)
+drawn_cards2 <- my_boot$draw(5)
+# should be the same
+rbind(drawn_cards1,drawn_cards2) == my_boot$drawn
 # Print remaining cards
-print(my_boot$drawn)
+print(my_boot$deck)
 # Reshuffle the boot
 my_boot$reshuffle()
+# should be empty
+print(my_boot$drawn)
 
 
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{decks}}{A list of DeckOfCards objects.}
+\item{\code{deck}}{A list of DeckOfCards objects.}
 
 \item{\code{drawn}}{A data frame representing the drawn cards.}
 }
@@ -42,6 +47,7 @@ my_boot$reshuffle()
 \item \href{#method-BootOfDecks-new}{\code{BootOfDecks$new()}}
 \item \href{#method-BootOfDecks-reshuffle}{\code{BootOfDecks$reshuffle()}}
 \item \href{#method-BootOfDecks-draw}{\code{BootOfDecks$draw()}}
+\item \href{#method-BootOfDecks-solitaire}{\code{BootOfDecks$solitaire()}}
 \item \href{#method-BootOfDecks-clone}{\code{BootOfDecks$clone()}}
 }
 }
@@ -96,6 +102,26 @@ Draw a specified number of cards from the boot.
 }
 \subsection{Returns}{
 A data frame representing the drawn cards.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-BootOfDecks-solitaire"></a>}}
+\if{latex}{\out{\hypertarget{method-BootOfDecks-solitaire}{}}}
+\subsection{Method \code{solitaire()}}{
+sort the deck of cards.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{BootOfDecks$solitaire(hand = "deck")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{hand}}{either the \code{deck} or the \code{drawn} hand.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a data frame representing the sorted deck of cards.
 }
 }
 \if{html}{\out{<hr>}}
