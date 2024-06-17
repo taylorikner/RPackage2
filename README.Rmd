@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # RPackage2
 
 <!-- badges: start -->
+[![Launch Posit Cloud](https://img.shields.io/badge/launch-posit%20cloud-447099?style=flat)](https://posit.cloud/content/8346360)
 <!-- badges: end -->
 
 The goal of `RPackage2` is to provide examples of how to create an R package. `RPackage2` currently version `r packageVersion("RPackage2")` last built on `r packageDescription("RPackage2")$Built |> strsplit(";") |> magrittr::extract2(1) |> magrittr::extract2(3) |> as.Date() |> format("%d-%B-%Y")`. 
