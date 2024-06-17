@@ -60,20 +60,20 @@ multiplication(pi, complex(1,0,1)) |>
 
 ### Data Analysis
 
-```{r}
+```{r features_percent_miss}
 mtcars |>
   missing_at_random() |>
   features_percent_miss()
 ```
 
-```{r}
+```{r features_percent_miss_plot}
 mtcars |>
   missing_at_random() |>
   features_percent_miss() |>
   plot()
 ```
 
-```{r}
+```{r missmap}
 mtcars |>
   missing_at_random() |>
   missmap()
@@ -81,12 +81,12 @@ mtcars |>
 
 ### Coin and Dice
 
-```{r}
+```{r coin_flip}
 # Flip a coin 10 times
 coin_flip(10)
 ```
 
-```{r}
+```{r roll_dice}
 # Roll a 3-sided die 10 times
 roll_dice(sides = 3, rolls = 10)
 ```
