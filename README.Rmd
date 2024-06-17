@@ -1,0 +1,140 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# RPackage2
+
+<!-- badges: start -->
+[![Launch Posit Cloud](https://img.shields.io/badge/launch-posit%20cloud-447099?style=flat)](https://posit.cloud/content/8346360)
+<!-- badges: end -->
+
+The goal of `RPackage2` is to provide examples of how to create an R package. `RPackage2` currently version `r packageVersion("RPackage2")` last built on `r packageDescription("RPackage2")$Built |> strsplit(";") |> magrittr::extract2(1) |> magrittr::extract2(3) |> as.Date() |> format("%d-%B-%Y")`. 
+
+It includes functions for addition, multiplication, rolling dice, flipping coins, as well as some functions we utilized in the class such as counting missing columns. 
+
+It also includes both an  [R6](https://adv-r.hadley.nz/r6.html#r6)`::`[R6Class](https://r6.r-lib.org/articles/Introduction.html) and [S4](https://adv-r.hadley.nz/s4.html) version of a deck of cards where we create a deck of cards, shuffling a deck, and drawing cards from the deck.
+
+## Installation
+
+You can install the development version of RPackage2 from [GitHub](https://github.com/) with:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("jkylearmstrong/RPackage2")
+```
+
+## Example
+
+Here are some basic examples:
+
+```{r example}
+library(RPackage2)
+```
+
+
+### Arithmetic
+
+```{r addition}
+addition(1,2)
+```
+
+```{r multiplication}
+multiplication(5,-4)
+```
+
+```{r composition}
+multiplication(pi, complex(1,0,1)) |>
+  exp() |>
+  addition(1) # essentially 0, error due to floating point arithmetic
+```
+
+### Data Analysis
+
+```{r features_percent_miss}
+mtcars |>
+  missing_at_random() |>
+  features_percent_miss()
+```
+
+```{r features_percent_miss_plot}
+mtcars |>
+  missing_at_random() |>
+  features_percent_miss() |>
+  plot()
+```
+
+```{r missmap}
+mtcars |>
+  missing_at_random() |>
+  missmap()
+```
+
+### Coin and Dice
+
+```{r coin_flip}
+# Flip a coin 10 times
+coin_flip(10)
+```
+
+```{r roll_dice}
+# Roll a 3-sided die 10 times
+roll_dice(sides = 3, rolls = 10)
+```
+
+### Deck of Cards (R6)
+
+```{r}
+# Create a new deck
+my_deck <- DeckOfCards$new()
+
+# Shuffle the deck
+my_deck$reshuffle()
+
+# Draw cards
+drawn_cards1 <- my_deck$draw(5)
+
+# Print drawn cards
+print(my_deck$drawn)
+
+# should be the same
+drawn_cards1 == my_deck$drawn
+
+# Draw more cards
+drawn_cards2 <- my_deck$draw(3)
+
+# should be the same
+rbind(drawn_cards1, drawn_cards2) == my_deck$drawn
+
+# Print drawn cards
+print(my_deck$drawn)
+```
+
+### Deck of Cards (S4)
+
+```{r}
+# Create a new deck
+deck <- new("DeckOfCards4", setofcards = createDeck())
+
+# Shuffle the deck
+shuffled_deck <- shuffle(deck)
+
+head(shuffled_deck@setofcards)
+
+# Draw cards
+
+result <- draw(deck, deck, 5)
+
+# Print drawn cards
+result
+```
