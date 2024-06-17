@@ -57,13 +57,15 @@ print(my_boot$drawn)
 \subsection{Method \code{new()}}{
 Initialize the boot of decks.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BootOfDecks$new(number_of_decks)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BootOfDecks$new(number_of_decks, use_jokers = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{number_of_decks}}{The number of decks in the boot.}
+
+\item{\code{use_jokers}}{A logical value indicating whether to include jokers in the boot.}
 }
 \if{html}{\out{</div>}}
 }

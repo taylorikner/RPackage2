@@ -53,15 +53,22 @@ DeckOfCards <- R6::R6Class("DeckOfCards",
                          #' @description
                          #' Initialize the deck of cards.
                          #'
+                         #' @param use_jokers A logical value indicating whether to include jokers in the deck.
+                         #'
                          #' @return a data frame representing the deck of cards.
 
-                         initialize  = function() {
-                           cards <- c("Ace", 2:10, "Jack", "Queen", "King")
-                           suits <- c("Hearts", "Diamonds", "Clubs", "Spades") # c("♠", "♥", "♦", "♣")
-                           deck <- expand.grid(Card = cards, Suit = suits)
+                         initialize  = function(use_jokers = FALSE) {
+                           set.seed(Sys.time())
+                           data("deck", package = "RPackage2")
+
+                           if (use_jokers == TRUE) {
+                             deck <- deck
+                           } else {
+                             deck <- deck[deck$Card != "Joker", ]
+                           }
+
                            deck <- deck[sample(1:nrow(deck)), ]
                            self$deck <- deck
-                           self$drawn <- data.frame()
                          },
 
                          #' @description
@@ -74,6 +81,7 @@ DeckOfCards <- R6::R6Class("DeckOfCards",
                            if (nrow(self$deck) < draws) {
                              stop("Not enough cards left in the deck to draw the requested number of cards.")
                            }
+                           set.seed(Sys.time())
 
                            drawn_cards <- self$deck[sample(nrow(self$deck), draws), ]
                            self$deck <- self$deck[!rownames(self$deck) %in% rownames(drawn_cards), ]
@@ -87,6 +95,7 @@ DeckOfCards <- R6::R6Class("DeckOfCards",
                          #' @return a data frame representing the reshuffled deck of cards.
 
                          reshuffle = function() {
+                           set.seed(Sys.time())
                            self$deck <- rbind(self$deck, self$drawn)
                            self$deck <- self$deck[sample(nrow(self$deck)), ]
                            self$drawn <- data.frame()
@@ -159,9 +168,11 @@ BootOfDecks <- R6::R6Class("BootOfDecks",
                          #' Initialize the boot of decks.
                          #'
                          #' @param number_of_decks The number of decks in the boot.
+                         #' @param use_jokers A logical value indicating whether to include jokers in the boot.
                          #' @return A list of DeckOfCards objects.
 
-                         initialize = function(number_of_decks) {
+                         initialize = function(number_of_decks, use_jokers = FALSE) {
+                           set.seed(Sys.time())
                            for (i in 1:number_of_decks) {
                              self$deck <- rbind(DeckOfCards$new()$deck, self$deck)
                            }
@@ -173,6 +184,7 @@ BootOfDecks <- R6::R6Class("BootOfDecks",
                          #' @return A data frame representing the reshuffled boot of decks.
 
                          reshuffle = function() {
+                           set.seed(Sys.time())
                            self$deck <- rbind(self$deck, self$drawn)
                            self$deck <- self$deck[sample(nrow(self$deck)), ]
                            self$drawn <- data.frame()
@@ -185,6 +197,7 @@ BootOfDecks <- R6::R6Class("BootOfDecks",
                          #' @return A data frame representing the drawn cards.
 
                          draw = function(draws = 1) {
+                           set.seed(Sys.time())
                            if (nrow(self$deck) < draws) {
                              stop("Not enough cards left to draw the requested number of cards.")
                            }
