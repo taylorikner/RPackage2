@@ -6,3 +6,6 @@
 ^pkgdown$
 ^data-raw$
 ^README\.Rmd$
+^RPackage2\.Rcheck$
+^RPackage2.*\.tar\.gz$
+^RPackage2.*\.tgz$
