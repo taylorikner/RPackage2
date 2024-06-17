@@ -1,4 +1,48 @@
 url: ~
 template:
   bootstrap: 5
+reference:
+  - title: "Deck of Cards Dataframe"
+    desc: "A dataframe of a deck of cards."
+    contents:
+    - "deck"
+  - title: "Data Analysis Functions"
+    desc: "Examples of some data analysis functions."
+    contents:
+    - "addition"
+    - "multiplication"
+    - "SumNa"
+    - "missing_at_random"
+    - "missmap"
+    - "features_percent_miss"
+  - title: "Simulators"
+    desc: "Simulators for Dice Rolling and Coin Flipping."
+    contents:
+    - "coin_flip"
+    - "roll_dice"
+  - title: "R6 Class of Deck of Cards"
+    desc: "An R6 class of a deck of cards."
+    contents:
+    - "DeckOfCards"
+    - "BootOfDecks"
+  - title: "S4 Classes for Deck of Cards"
+    desc: "S4 Classes for Deck of Cards."
+    contents:
+    - "SetOfCards"
+    - "DeckOfCards4"
+    - "BootOfDecks4"
+    - "PlayerHand4"
+    - "DiscardPile4"
+  - title: "S4 Functions to create Decks of Cards"
+    desc: "S4 Functions to create Decks of Cards."
+    contents:
+    - "createDeck"
+    - "createBootDeck"
+  - title: "S4 Card Operations"
+    desc: "Functions to shuffle a set of cards, draw cards from a set, and sort a set of cards in solitaire order."
+    contents:
+    - "shuffle"
+    - "draw"
+    - "solitaire"
 
+search:
