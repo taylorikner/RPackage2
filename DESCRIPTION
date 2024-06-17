@@ -17,7 +17,11 @@ Imports:
     forcats,
     ggplot2,
     magrittr,
+    methods,
     R6,
     scales,
     tibble,
     tidyr
+Depends: 
+    R (>= 2.10)
+LazyData: true
