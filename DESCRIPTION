@@ -1,10 +1,15 @@
 Package: RPackage2
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Title: Example of an R package containing both R6 and S4 classes
+Version: 0.1.0
+Authors@R: c(
+    person(given = "Taylor", family = "Ikner", role = c("aut", "ctb")),
+    person(given = "J Kyle", 
+           family ="Armstrong", 
+           email = "Johnathon.Armstrong@jefferson.edu", 
+           role = c("aut", "cre", "ctb", "dtc"),
+           comment = c(ORCID = "0000-0002-4269-0121"))
+  )
+Description: Example of an R package containing both R6 and S4 classes. Also contains examples of a data frame of a deck of cards and other helper functions. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -17,7 +22,11 @@ Imports:
     forcats,
     ggplot2,
     magrittr,
+    methods,
     R6,
     scales,
     tibble,
     tidyr
+Depends: 
+    R (>= 4.4)
+LazyData: true

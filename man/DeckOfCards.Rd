@@ -66,9 +66,16 @@ my_deck$solitaire("deck") |> print()
 \subsection{Method \code{new()}}{
 Initialize the deck of cards.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DeckOfCards$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{DeckOfCards$new(use_jokers = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{use_jokers}}{A logical value indicating whether to include jokers in the deck.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 a data frame representing the deck of cards.
 }

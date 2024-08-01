@@ -37,7 +37,7 @@ features_percent_miss <- function(data, percent_miss = 0, na_list = NULL){
     mutate(PctComp = (1 - PctNa))
 
   data_out <- na_sums %>%
-    filter(PctNa >= percent_miss) %>%
+    dplyr::filter(PctNa >= percent_miss) %>%
     arrange(desc(PctNa))
 
   class(data_out) <- c("features_percent_miss", class(data_out))
