@@ -39,8 +39,7 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
+
 
 # translation temp files
 po/*~
@@ -48,3 +47,6 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 docs
+RPackage2.Rcheck/
+RPackage2*.tar.gz
+RPackage2*.tgz
